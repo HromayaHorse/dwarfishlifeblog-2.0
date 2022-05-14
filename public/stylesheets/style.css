@@ -1,0 +1,93 @@
+body {
+  background-color: black;
+  color: white
+}
+
+.error {
+  font-family: 'Common Pixel', sans-serif;
+  padding-top: 5%;
+}
+
+.logo {
+  background-color: black;
+  width: auto;
+  margin-top: 50px;
+  margin-left: 28%;
+  margin-bottom: 20px;
+}
+
+.nav-pills {
+  background-color: black;
+
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: black;
+  background-color: whitesmoke;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  margin-left: 12px;
+  margin-right: 32px;
+  font-family: 'Common Pixel', sans-serif;
+  font-size: 20px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.card {
+  color: white;
+  background-color: black;
+  margin-left: 13px;
+  margin-right: 35px;
+}
+
+.card-body {
+  padding-top: 50px;
+  text-align: center;
+  color: whitesmoke;
+}
+
+.table {
+  --bs-table-bg: transparent;
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #212529;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-active-color: #212529;
+  --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+  --bs-table-hover-color: #212529;
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  width: 35%;
+  margin-bottom: 1rem;
+  color: white;
+  vertical-align: top;
+  border-color: black;
+  margin-left: 15%;
+  margin-top: 50px;
+  font-family: 'Common Pixel', sans-serif;
+  font-size: 16px;                          
+}
+
+.accordion-item {
+  background-color: black;
+}
+
+.accordion-button:not(.collapsed) {
+  color: black;
+}
+
+
+.accordion {
+  padding-top: 50px;
+  text-align: center;
+  color: whitesmoke;
+  width: 80%;
+  margin-left: 10%;
+}
