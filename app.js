@@ -10,6 +10,8 @@ let linksRouter = require('./routes/links');
 let newsRouter = require('./routes/news');
 let artRouter = require('./routes/art')
 
+const db = require('./db/queries')
+
 // call express-ejs-layouts
 const expressLayouts = require('express-ejs-layouts');
 
@@ -30,6 +32,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/api/news', db.getNews)
+app.get('/api/news/:id', db.getNewsById)
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);

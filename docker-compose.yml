@@ -1,9 +1,21 @@
 version: "3.9"
 services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_USER=pigeon
+      - POSTGRES_PASSWORD=test007007
+      - POSTGRES_DB=dwarfishlife
+    ports:
+      - "35432:5432"
+    # volumes: 
+    #   - db:/var/lib/postgresql/data
+
 
   dwarfishlifeblog:
     build:
       context: .
     ports:
-      - '3000:3000'
+      - '13000:3000'
         
