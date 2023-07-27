@@ -38,6 +38,20 @@ body {
   font-size: 20px;
 }
 
+.news_date {
+  font-family: 'Common Pixel', sans-serif;
+  padding-right: 100%;
+  font-size: 17px;
+  color: green;
+}
+
+.news_topic {
+  font-family: 'Common Pixel', sans-serif;
+  color: blue;
+  padding-right: 70%;
+  padding-top: 1%;
+}
+
 .nav-link {
   color: white;
 }

@@ -10,12 +10,12 @@ services:
     ports:
       - "35432:5432"
     volumes: 
-      - ./db:/var/lib/postgresql/data
+      - ./postgres-data:/var/lib/postgresql/data
 
 
   dwarfishlifeblog:
     build:
       context: .
     ports:
-      - '13000:3000'
+      - '3000:3000'
         
