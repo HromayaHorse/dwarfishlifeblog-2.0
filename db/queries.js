@@ -1,7 +1,7 @@
 const pool = require('./config')
 
 const getNews = (request, response) => {
-    pool.query('SELECT * FROM news ORDER BY id ASC', (error, results) => {
+    pool.query('SELECT * FROM news ORDER BY id DESC', (error, results) => {
       if (error) {
         throw error
       }
