@@ -8,7 +8,7 @@
 <div class="accordion" id="myData"></div>
 
   <script>
-fetch('http://localhost:3000/api/news')
+fetch("https://dwarfishlife.com/api/news")
    .then(response => response.json())
    .then(function (data) {
                 appendData(data);
