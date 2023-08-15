@@ -1,3 +1,4 @@
+const { response } = require('express')
 const pool = require('./config')
 
 const getNews = (request, response) => {
@@ -20,7 +21,19 @@ const getNewsById = (request, response) => {
     })
 }
 
+const getMagicBall = (request, response) => {
+    pool.query(`SELECT * FROM magicball
+    ORDER BY RANDOM()
+    LIMIT 1
+    `, (error, results) => {
+        if (error) {
+            throw error}
+            response.status(200).json(results.rows)
+    })
+}
+
 module.exports = {
     getNews,
-    getNewsById
+    getNewsById,
+    getMagicBall
 }

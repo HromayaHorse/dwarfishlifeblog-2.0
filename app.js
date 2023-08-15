@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/news', db.getNews)
 app.get('/api/news/:id', db.getNewsById)
+app.get('/api/magicball', db.getMagicBall);
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);
