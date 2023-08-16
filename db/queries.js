@@ -26,14 +26,36 @@ const getMagicBall = (request, response) => {
     ORDER BY RANDOM()
     LIMIT 1
     `, (error, results) => {
-        if (error) {
+        if (error) {exit
             throw error}
             response.status(200).json(results.rows)
     })
-}
+};
+
+const getJesusQuote = (request, response) => {
+    pool.query(`SELECT * FROM JesusChristQuotes
+    ORDER BY RANDOM()
+    LIMIT 1`, (error, results) => {
+        if (error) {exit
+            throw error}
+            response.status(200).json(results.rows)
+    })
+};
+
+const getJesusRestPics = (request, response) => {
+    pool.query(`SELECT * FROM JesusChristRestPics
+    ORDER BY RANDOM()
+    LIMIT 1`, (error, results) => {
+        if (error) {exit
+            throw error}
+            response.status(200).json(results.rows)
+    })
+};
 
 module.exports = {
     getNews,
     getNewsById,
-    getMagicBall
+    getMagicBall,
+    getJesusQuote,
+    getJesusRestPics
 }

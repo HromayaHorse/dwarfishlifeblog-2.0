@@ -33,9 +33,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/news', db.getNews)
-app.get('/api/news/:id', db.getNewsById)
+app.get('/api/news', db.getNews);
+app.get('/api/news/:id', db.getNewsById);
 app.get('/api/magicball', db.getMagicBall);
+app.get('/api/jesus/quotes', db.getJesusQuote);
+app.get('/api/jesus/pic', db.getJesusRestPics);
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);
