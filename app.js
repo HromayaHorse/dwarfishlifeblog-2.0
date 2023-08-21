@@ -3,19 +3,21 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const experssLayouts = require('express-ejs-layouts')
+const bodyParser = require('body-parser')
 
 var indexRouter = require('./routes/index');
 let linksRouter = require('./routes/links');
 let newsRouter = require('./routes/news');
 let artRouter = require('./routes/art')
 
-const db = require('./db/queries')
+const db = require('./db/queries');
+const dbTamagochi = require('./db/api.tamagochi');
 
 // call express-ejs-layouts
 const expressLayouts = require('express-ejs-layouts');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +29,12 @@ app.set('layout', './layouts/application')
 // add express layouts module
 app.use(expressLayouts)
 
+app.use(bodyParser.json())
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +46,10 @@ app.get('/api/news/:id', db.getNewsById);
 app.get('/api/magicball', db.getMagicBall);
 app.get('/api/jesus/quotes', db.getJesusQuote);
 app.get('/api/jesus/pic', db.getJesusRestPics);
+
+app.get('/api/tamagochi/getPet/:owner_chat_id', dbTamagochi.getPet);
+app.post('/api/tamagochi/createPet', dbTamagochi.postPet);
+app.put('/api/tamagochi/updatePet/:owner_chat_id', dbTamagochi.updatePet);
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);
