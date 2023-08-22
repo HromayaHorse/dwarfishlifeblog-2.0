@@ -2,11 +2,11 @@ const { response } = require('express')
 const pool = require('./config')
 
 const postPet = (req, res) =>{
-    const {owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive} = req.body
+    const {owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive, is_peed, shitted} = req.body
 
-    pool.query(`INSERT INTO tamagochi (owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive) 
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8) ON CONFLICT (owner_chat_id) DO NOTHING RETURNING *`, 
-    [owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive],
+    pool.query(`INSERT INTO tamagochi (owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive, is_peed, shitted) 
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) ON CONFLICT (owner_chat_id) DO NOTHING RETURNING *`, 
+    [owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive, is_peed, shitted],
      (error, results) => {
         if(error) {
             throw error;
@@ -21,12 +21,12 @@ const postPet = (req, res) =>{
 
 const updatePet = (req, res) => {
     const owner_chat_id = parseInt(req.params.owner_chat_id);
-    const {name, hunger, happines, age, health, is_sickness, is_alive} = req.body;
+    const {name, hunger, happines, age, health, is_sickness, is_alive, is_peed, shitted} = req.body;
 
     pool.query(
-        `UPDATE tamagochi SET name = $2, hunger = $3, happines = $4, age = $5, health = $6, is_sickness = $7, is_alive = $8 
+        `UPDATE tamagochi SET name = $2, hunger = $3, happines = $4, age = $5, health = $6, is_sickness = $7, is_alive = $8, is_peed = $9, shitted = $10 
             WHERE owner_chat_id = $1 RETURNING *`,
-            [owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive],
+            [owner_chat_id, name, hunger, happines, age, health, is_sickness, is_alive, is_peed, shitted],
             (error, results) => {
                 if(error) {
                     throw error;
