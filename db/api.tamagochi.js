@@ -48,8 +48,88 @@ const getPet = (req, res) => {
     })
 };
 
+const feedPet = (req, res) => {
+    const owner_chat_id = req.params.owner_chat_id;
+
+    pool.query(`UPDATE tamagochi SET hunger = 180 WHERE owner_chat_id = $1 RETURNING *`, 
+    [owner_chat_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(`Скотина покормлена: ${JSON.stringify(results.rows[0])}`)
+    })
+};
+
+const cleanShit = (req, res) => {
+    const owner_chat_id = req.params.owner_chat_id;
+
+    pool.query(`UPDATE tamagochi SET shitted = false WHERE owner_chat_id = $1 RETURNING *`, 
+    [owner_chat_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(`Говно убрано: ${JSON.stringify(results.rows[0])}`)
+    })
+};
+
+const cleanPee = (req, res) => {
+    const owner_chat_id = req.params.owner_chat_id;
+
+    pool.query(`UPDATE tamagochi SET is_peed = false WHERE owner_chat_id = $1 RETURNING *`, 
+    [owner_chat_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(`Моча убрана: ${JSON.stringify(results.rows[0])}`)
+    })
+};
+
+const curePet = (req, res) => {
+    const owner_chat_id = req.params.owner_chat_id;
+
+    pool.query(`UPDATE tamagochi SET is_sickness = false WHERE owner_chat_id = $1 RETURNING *`, 
+    [owner_chat_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(`Скотина вылечена: ${JSON.stringify(results.rows[0])}`)
+    })
+};
+
+const playWithPet = (req, res) => {
+    const owner_chat_id = req.params.owner_chat_id;
+
+    pool.query(`UPDATE tamagochi SET happines = true WHERE owner_chat_id = $1 RETURNING *`, 
+    [owner_chat_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(`Со скотиной поиграли. Скотина довольна:
+         ${JSON.stringify(results.rows[0])}`)
+    })
+};
+
+const killPet = (req, res) => {
+    const owner_chat_id = req.params.owner_chat_id;
+
+    pool.query(`UPDATE tamagochi SET is_alive = false WHERE owner_chat_id = $1 RETURNING *`, 
+    [owner_chat_id], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).send(`Скотину забили с особой жестокостью. Лежит вся в крови и в говне. Прямая кишка лезет наружу:
+         ${JSON.stringify(results.rows[0])}`)
+    })
+};
+
 module.exports = {
     postPet,
     updatePet,
-    getPet
+    getPet,
+    feedPet,
+    cleanShit,
+    cleanPee,
+    curePet,
+    playWithPet,
+    killPet
 }

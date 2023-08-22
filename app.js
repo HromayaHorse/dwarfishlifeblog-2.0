@@ -50,6 +50,12 @@ app.get('/api/jesus/pic', db.getJesusRestPics);
 app.get('/api/tamagochi/getPet/:owner_chat_id', dbTamagochi.getPet);
 app.post('/api/tamagochi/createPet', dbTamagochi.postPet);
 app.put('/api/tamagochi/updatePet/:owner_chat_id', dbTamagochi.updatePet);
+app.get('/api/tamagochi/feedPet/:owner_chat_id', dbTamagochi.feedPet);
+app.get('/api/tamagochi/cleanShit/:owner_chat_id', dbTamagochi.cleanShit);
+app.get('/api/tamagochi/cleanPee/:owner_chat_id', dbTamagochi.cleanPee);
+app.get('/api/tamagochi/curePet/:owner_chat_id', dbTamagochi.curePet);
+app.get('/api/tamagochi/playWithPet/:owner_chat_id', dbTamagochi.playWithPet);
+app.get('/api/tamagochi/killPet/:owner_chat_id', dbTamagochi.killPet);
 
 app.use('/', indexRouter);
 app.use('/links', linksRouter);
