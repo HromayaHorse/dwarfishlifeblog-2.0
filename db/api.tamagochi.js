@@ -12,7 +12,7 @@ const postPet = (req, res) =>{
             throw error;
         }
         if(results.rows.length > 0) {
-            res.status(201).send(`Pet has been successfully created: ${JSON.stringify(results.rows[0])}`);
+            res.status(201).send(`${JSON.stringify(results.rows[0])}`);
         } else {
             res.status(400).send(`Pet with ID ${owner_chat_id} is existing already`)
         }
@@ -31,8 +31,7 @@ const updatePet = (req, res) => {
                 if(error) {
                     throw error;
                 }
-                res.status(200).send(`Pet has been modified with owner_chat_id ${owner_chat_id}
-                RESULT: ${JSON.stringify(results.rows[0])}`);
+                res.status(200).send(`${JSON.stringify(results.rows[0])}`);
             }
     )
 };
@@ -56,7 +55,7 @@ const feedPet = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).send(`Скотина покормлена: ${JSON.stringify(results.rows[0])}`)
+        res.status(200).send(`${JSON.stringify(results.rows[0])}`)
     })
 };
 
@@ -68,7 +67,7 @@ const cleanShit = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).send(`Говно убрано: ${JSON.stringify(results.rows[0])}`)
+        res.status(200).send(`${JSON.stringify(results.rows[0])}`)
     })
 };
 
@@ -80,7 +79,7 @@ const cleanPee = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).send(`Моча убрана: ${JSON.stringify(results.rows[0])}`)
+        res.status(200).send(`${JSON.stringify(results.rows[0])}`)
     })
 };
 
@@ -92,7 +91,7 @@ const curePet = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).send(`Скотина вылечена: ${JSON.stringify(results.rows[0])}`)
+        res.status(200).send(`${JSON.stringify(results.rows[0])}`)
     })
 };
 
@@ -104,8 +103,7 @@ const playWithPet = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).send(`Со скотиной поиграли. Скотина довольна:
-         ${JSON.stringify(results.rows[0])}`)
+        res.status(200).send(`${JSON.stringify(results.rows[0])}`)
     })
 };
 
@@ -117,8 +115,7 @@ const killPet = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).send(`Скотину забили с особой жестокостью. Лежит вся в крови и в говне. Прямая кишка лезет наружу:
-         ${JSON.stringify(results.rows[0])}`)
+        res.status(200).send(`${JSON.stringify(results.rows[0])}`)
     })
 };
 
